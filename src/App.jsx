@@ -1,14 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import User from "./pages/User";
+import Admin from "./pages/Admin";
+import Owner from "./pages/Owner";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Create Project DONE!
-    </h1>
+    <BrowserRouter>
+    <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="User" element={<User/>}/>
+          <Route path="Admin" element={<Admin/>}/>
+        </Route>
+        <Route path="/Owner" element={<Owner/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
-
-export default App
